@@ -1,0 +1,2 @@
+Bài 15: Kết hợp 2 bộ lọc thông thấp Gaussian để tạo thành bộ lọc thông dải (bandpass filter). Minh họa với một ảnh xám.
+Thay đổi tần số cắt của các bộ bộ Gaussian và nhận xét kết quả đó.
