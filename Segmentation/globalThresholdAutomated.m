@@ -1,16 +1,15 @@
 clc; close all; clearvars;
 %Extract the img
-name = 'coin.jpg';
+name = 'lena.png';
 im = imread(name);
 lum = rgb2gray(im);
-%lum = im(:,:,1);
 [row, col] = size(lum);
 %Automated Gen threshold value
 %Tnow = 6;
-rgb2histogram(name);
+%rgb2histogram(name);
 Tnow = mean2(lum);
 Tlast = 0;
-d = 4;
+d = 5;
 %Automated updated T
 while abs(Tnow - Tlast) > d 
     tmp_seg = zeros(size(lum));
@@ -22,7 +21,7 @@ while abs(Tnow - Tlast) > d
         end
     end
     figure;
-    subplot(121), imshow(uint8(lum));
+    subplot(121), imshow(im);
     subplot(122), imshow(uint8(tmp_seg)), title(['T : ',num2str(uint8(Tnow))]);
     m1 = uint8(mean2(lum(tmp_seg == 255)));
     m2 = uint8(mean2(lum(tmp_seg == 0)));

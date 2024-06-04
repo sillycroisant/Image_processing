@@ -1,12 +1,12 @@
 clc; close all; clearvars;
 %Extract the illuminance
 im = imread('orange.jpg');
-lum = im(:,:,2); 
+lum = rgb2gray(im);     
 [row, col] = size(lum);
 %Plot the histogram and assess the threshold value
 figure;
-histogram(lum); 
-T = 230;
+histogram(lum), title('histogram');
+T = 180;
 %Segment
 seg = zeros(size(lum));
 for i=1:row
@@ -16,7 +16,6 @@ for i=1:row
         end
     end
 end
-%The output resultdepend on the uniformity of lighting
 figure;
-subplot(121), imshow(rgb2gray(im)), title('origin img');
+subplot(121), imshow(im), title('color img');
 subplot(122), imshow(uint8(seg)), title('segment img');
